@@ -1,0 +1,128 @@
+swagger: "2.0"
+info:
+  description: "Bibliotech"
+  version: "1.0.0"
+  title: "Bibliotech API"
+host: "localhost:3000"
+basePath: "/"
+tags:
+  - name: Book
+      description: Book
+        /book:
+          get:
+            tags:
+              - Book
+            summary: List of book
+            description: List of book
+            security:
+              - bearerAuth: [ ]
+            consumes:
+              - application/json
+            responses:
+              200:
+                description: Get book
+
+          post:
+            tags:
+              - Book
+            summary: Add one book
+            description: Add one book
+            parameters:
+              - name: body
+                in: body
+                required: true
+                schema:
+                  $ref: '#/definitions/Book'
+            consumes:
+              - application/json
+            responses:
+              200:
+                description: Add one book
+
+  - name: Genres
+    description: Genre of Book
+
+paths:
+  /genres:
+    get:
+      tags:
+        - Genres
+      summary: List of genres
+      description: List of genres
+      security:
+        - bearerAuth: []
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: Get genres
+
+    post:
+      tags:
+        - Genres
+      summary: Add one genre
+      description: Add one genre
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Genre'
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: Add one genre
+
+  - name: Category
+      description: Category of Book
+
+          /Category:
+            get:
+              tags:
+                - Category
+              summary: List of category
+              description: List of category
+              security:
+                - bearerAuth: [ ]
+              consumes:
+                - application/json
+              responses:
+                200:
+                  description: Get category
+
+            post:
+              tags:
+                - Category
+              summary: Add one category
+              description: Add one category
+              parameters:
+                - name: body
+                  in: body
+                  required: true
+                  schema:
+                    $ref: '#/definitions/Category'
+              consumes:
+                - application/json
+              responses:
+                200:
+                  description: Add one category
+
+
+
+securityDefinitions:
+  bearerAuth:
+    type: 'apiKey'
+    name: 'Authorization'
+    scheme: 'bearer'
+    in: 'header'
+
+
+definitions:
+  Genre:
+    type: object
+    properties:
+      libelle:
+        type: string
+    xml:
+      name: Genre
